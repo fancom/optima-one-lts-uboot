@@ -318,8 +318,8 @@ static void set_fdtfile(void)
  */
 static void set_fdt_addr(void)
 {
-	if (env_get("fdt_addr"))
-		return;
+	//if (env_get("fdt_addr"))
+	//	return;
 
 	if (fdt_magic(fw_dtb_pointer) != FDT_MAGIC)
 		return;
@@ -409,12 +409,12 @@ static void set_serial_number(void)
 int misc_init_r(void)
 {
 	set_fdt_addr();
-	set_fdtfile();
-	set_usbethaddr();
+	//set_fdtfile();
+	//set_usbethaddr();
 #ifdef CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
 	set_board_info();
 #endif
-	set_serial_number();
+	//set_serial_number();
 
 	return 0;
 }
@@ -497,18 +497,18 @@ void *board_fdt_blob_setup(void)
 
 int ft_board_setup(void *blob, struct bd_info *bd)
 {
-	/*
-	 * For now, we simply always add the simplefb DT node. Later, we
-	 * should be more intelligent, and e.g. only do this if no enabled DT
-	 * node exists for the "real" graphics driver.
-	 */
-	lcd_dt_simplefb_add_node(blob);
+//	/*
+//	 * For now, we simply always add the simplefb DT node. Later, we
+//	 * should be more intelligent, and e.g. only do this if no enabled DT
+//	 * node exists for the "real" graphics driver.
+//	 */
+//	lcd_dt_simplefb_add_node(blob);
 
-#ifdef CONFIG_EFI_LOADER
-	/* Reserve the spin table */
-	efi_add_memory_map(0, CONFIG_RPI_EFI_NR_SPIN_PAGES << EFI_PAGE_SHIFT,
-			   EFI_RESERVED_MEMORY_TYPE);
-#endif
+//#ifdef CONFIG_EFI_LOADER
+//	/* Reserve the spin table */
+//	efi_add_memory_map(0, CONFIG_RPI_EFI_NR_SPIN_PAGES << EFI_PAGE_SHIFT,
+//			   EFI_RESERVED_MEMORY_TYPE);
+//#endif
 
 	return 0;
 }
