@@ -2,5 +2,5 @@
 #
 # (C) Copyright 2012 Stephen Warren
 
-obj-y	:= rpi.o
+obj-y	:= hmi.o
 obj-y	+= lowlevel_init.o
