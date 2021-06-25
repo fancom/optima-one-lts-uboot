@@ -12,12 +12,11 @@
 
 #ifndef __ASSEMBLY__
 #include <asm/arch/base.h>
-#endif
+#endif // __ASSEMBLY__
 
 #define CONFIG_SYS_TIMER_RATE		1000000
 #define CONFIG_SYS_TIMER_COUNTER	\
 	(&((struct bcm2835_timer_regs *)BCM2835_TIMER_PHYSADDR)->clo)
-#endif
 
 /*
  * 2835 is a SKU in a series for which the 2708 is the first or primary SoC,
@@ -32,7 +31,7 @@
  */
 #ifdef CONFIG_BCM2835
 #define CONFIG_MACH_TYPE		MACH_TYPE_BCM2708
-#endif
+#endif // CONFIG_BCM2835
 
 /* Memory layout */
 #define CONFIG_SYS_SDRAM_BASE		0x00000000
@@ -152,4 +151,4 @@
 		" source ${scriptaddr}; fi;\0"					\
 	"bootcmd=run partsel; run boot_me; run err;\0"
 
-#endif
+#endif // __CONFIG_H
