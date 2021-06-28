@@ -1,6 +1,6 @@
-RPI BOARD
-M:	Matthias Brugger <mbrugger@suse.com>
+FANCOM HMI BOARD
+M:	Tim Gruijters <info@nobleo.nl>
 S:	Maintained
-F:	board/raspberrypi/rpi/
-F:	include/configs/rpi.h
-F:	configs/rpi_*defconfig
+F:	board/fancom/hmi/
+F:	include/configs/hmi.h
+F:	configs/fancom_hmi_defconfig
