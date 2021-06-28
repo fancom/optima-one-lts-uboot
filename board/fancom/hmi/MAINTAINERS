@@ -1,0 +1,6 @@
+FANCOM HMI BOARD
+M:	Tim Gruijters <info@nobleo.nl>
+S:	Maintained
+F:	board/fancom/hmi/
+F:	include/configs/hmi.h
+F:	configs/fancom_hmi_defconfig

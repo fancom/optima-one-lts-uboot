@@ -196,7 +196,17 @@ config TARGET_RPI_ARM64
 	  the RPi 4 model B, in AArch64 (64-bit) mode.
 	select ARM64
 
+config TARGET_FANCOM_HMI
+	bool "Fancom HMI based on CM4"
+	help
+	  Human Machine Interface board selection for the Fancom project.
+	  Select this is you want to build the U-Boot boot loader for the
+	  HMI.
+	select ARM64
+
 endchoice
+
+if !TARGET_FANCOM_HMI
 
 config SYS_BOARD
 	default "rpi"
@@ -211,5 +221,7 @@ config SYS_CONFIG_NAME
 	default "rpi"
 
 source "board/raspberrypi/rpi/Kconfig"
+
+endif
 
 endmenu
