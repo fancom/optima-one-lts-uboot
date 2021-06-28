@@ -14,10 +14,6 @@
 #include <asm/arch/base.h>
 #endif // __ASSEMBLY__
 
-#define CONFIG_SYS_TIMER_RATE		1000000
-#define CONFIG_SYS_TIMER_COUNTER	\
-	(&((struct bcm2835_timer_regs *)BCM2835_TIMER_PHYSADDR)->clo)
-
 /*
  * 2835 is a SKU in a series for which the 2708 is the first or primary SoC,
  * so 2708 has historically been used rather than a dedicated 2835 ID.
@@ -58,7 +54,7 @@
 #define CONFIG_SYS_CBSIZE		1024
 
 /* Environment */
-#define CONFIG_SYS_LOAD_ADDR		0x00200000
+#define CONFIG_SYS_LOAD_ADDR		0x00008000
 #define CONFIG_LOADADDR			CONFIG_SYS_LOAD_ADDR
 
 
@@ -118,11 +114,10 @@
 #define CONFIG_EXTRA_ENV_SETTINGS						\
 	"fdt_high=" FDT_HIGH "\0"						\
 	"initrd_high=" INITRD_HIGH "\0"						\
-	"kernel_addr_r=0x80000\0"						\
+	"kernel_addr_r=" __stringify(CONFIG_LOADADDR) "\0"			\
 	"scriptaddr=0x02400000\0"						\
 	"fdto_addr_r=0x02500000\0"						\
 	"fdt_addr=0x2eff3700\0"							\
-	"loadaddr=" __stringify(CONFIG_LOADADDR) "\0"				\
 	"ramdisk_addr_r=0x02700000\0"						\
 	/* Error handling */							\
 	"save=saveenv; saveenv;\0"						\
