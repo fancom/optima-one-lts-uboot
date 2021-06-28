@@ -199,7 +199,9 @@ config TARGET_RPI_ARM64
 config TARGET_FANCOM_HMI
 	bool "Fancom HMI based on CM4"
 	help
-	  fancom
+	  Human Machine Interface board selection for the Fancom project.
+	  Select this is you want to build the U-Boot boot loader for the
+	  HMI.
 	select ARM64
 
 endchoice
