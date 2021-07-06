@@ -1,0 +1,22 @@
+if TARGET_FANCOM_HC
+
+config SYS_BOARD
+        default "hc"
+
+config SYS_VENDOR
+        default "fancom"
+
+config SYS_SOC
+        default "bcm283x"
+
+config SYS_CONFIG_NAME
+        default "hc"
+
+config RPI_EFI_NR_SPIN_PAGES
+	int "Spin table page count"
+	default 1
+	help
+	  Number of pages to reserve starting at page 0 for spin tables in the EFI
+	  memory map
+
+endif
