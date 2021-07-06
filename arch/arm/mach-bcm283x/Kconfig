@@ -204,10 +204,10 @@ config TARGET_FANCOM_HMI
 	  HMI.
 	select ARM64
 
-config TARGET_FANCOM_HC
-	bool "Fancom HC based on CM4"
+config TARGET_FANCOM_WHC
+	bool "Fancom WHC based on CM4"
 	help
-	  House controller board selection for the Fancom project. Select
+	  Whole house controller board selection for the Fancom project. Select
 	  this is you want to build the U-Boot boot loader for the house
 	  controller
 	select ARM64

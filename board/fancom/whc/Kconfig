@@ -1,7 +1,7 @@
-if TARGET_FANCOM_HC
+if TARGET_FANCOM_WHC
 
 config SYS_BOARD
-        default "hc"
+        default "whc"
 
 config SYS_VENDOR
         default "fancom"
@@ -10,7 +10,7 @@ config SYS_SOC
         default "bcm283x"
 
 config SYS_CONFIG_NAME
-        default "hc"
+        default "whc"
 
 config RPI_EFI_NR_SPIN_PAGES
 	int "Spin table page count"
