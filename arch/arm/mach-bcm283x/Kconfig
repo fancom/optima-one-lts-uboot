@@ -215,7 +215,7 @@ config TARGET_FANCOM_WHC
 endchoice
 
 if !TARGET_FANCOM_HMI
-if !TARGET_FANCOM_HC
+if !TARGET_FANCOM_WHC
 
 config SYS_BOARD
 	default "rpi"
