@@ -2,5 +2,5 @@
 #
 # (C) Copyright 2012 Stephen Warren
 
-obj-y	:= hc.o
+obj-y	:= whc.o
 obj-y	+= lowlevel_init.o

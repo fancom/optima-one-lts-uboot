@@ -1,6 +1,6 @@
 FANCOM HOUSE CONTROLLER BOARD
 M:	Tim Gruijters <info@nobleo.nl>
 S:	Maintained
-F:	board/fancom/hc/
-F:	include/configs/hc.h
-F:	configs/fancom_hc_defconfig
+F:	board/fancom/whc/
+F:	include/configs/whc.h
+F:	configs/fancom_whc_defconfig
