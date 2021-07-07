@@ -204,9 +204,18 @@ config TARGET_FANCOM_HMI
 	  HMI.
 	select ARM64
 
+config TARGET_FANCOM_WHC
+	bool "Fancom WHC based on CM4"
+	help
+	  Whole house controller board selection for the Fancom project. Select
+	  this is you want to build the U-Boot boot loader for the house
+	  controller
+	select ARM64
+
 endchoice
 
 if !TARGET_FANCOM_HMI
+if !TARGET_FANCOM_WHC
 
 config SYS_BOARD
 	default "rpi"
@@ -221,7 +230,7 @@ config SYS_CONFIG_NAME
 	default "rpi"
 
 source "board/raspberrypi/rpi/Kconfig"
-
+endif
 endif
 
 endmenu

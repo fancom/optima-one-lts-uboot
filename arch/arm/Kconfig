@@ -2018,6 +2018,7 @@ source "board/vscom/baltos/Kconfig"
 source "board/phytium/durian/Kconfig"
 source "board/xen/xenguest_arm64/Kconfig"
 source "board/fancom/hmi/Kconfig"
+source "board/fancom/whc/Kconfig"
 
 source "arch/arm/Kconfig.debug"
 
