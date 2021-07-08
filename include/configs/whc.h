@@ -124,6 +124,7 @@
 	"error_cnt=0\0"								\
 	"error_max=3\0"								\
 	"err=setexpr error_cnt $error_cnt + 1; run save; reset;\0"		\
+	"halt=while true; do sleep 1; done;\0"					\
 	/* Boot arguments */							\
 	"status=blue\0"								\
 	"bootargs=coherent_pool=1M 8250.nr_uarts=1"				\
@@ -144,6 +145,6 @@
 	"boot_me=echo \"Booting ${status}\"; if test -e mmc 0:1 /boot.scr; then"\
 		" load mmc 0:1 ${scriptaddr} /boot.scr;"			\
 		" source ${scriptaddr}; fi;\0"					\
-	"bootcmd=run partsel; run boot_me; run err;\0"
+	"bootcmd=run partsel; run boot_me; run err; run halt;\0"
 
 #endif // __CONFIG_H
