@@ -134,7 +134,7 @@
 		" smsc95xx.macaddr=DC:A6:32:F2:AB:CD vc_mem.mem_base=0x3ec00000"\
 		" vc_mem.mem_size=0x40000000  dwc_otg.lpm_enable=0"		\
 		" console=ttyS0,115200 rootfstype=ext4 rootwait"		\
-		" earlyprintk debug\0"						\
+		" fsck.mode=force fsck.repair=yes\0"				\
 	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2\";\0"	\
 	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3\";\0"	\
 	/* Boot functions */							\
