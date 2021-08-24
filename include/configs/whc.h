@@ -127,7 +127,7 @@
 	"halt=while true; do sleep 1; done;\0"					\
 	/* Boot arguments */							\
 	"status=blue\0"								\
-	"args=coherent_pool=1M 8250.nr_uarts=1"				\
+	"bootargs=coherent_pool=1M 8250.nr_uarts=1"				\
 		" snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1"	\
 		" bcm2708_fb.fbwidth=0 bcm2708_fb.fbheight=0"			\
 		" bcm2708_fb.fbdepth=24 bcm2708_fb.fbswap=1"			\
