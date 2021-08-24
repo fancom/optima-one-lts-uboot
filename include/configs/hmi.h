@@ -127,14 +127,14 @@
 	"halt=while true; do sleep 1; done;\0"					\
 	/* Boot arguments */							\
 	"status=blue\0"								\
-	"bootargs=setenv bootargs coherent_pool=1M 8250.nr_uarts=1"		\
+	"args=setenv bootargs \"coherent_pool=1M 8250.nr_uarts=1"		\
 		" snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1"	\
 		" bcm2708_fb.fbwidth=0 bcm2708_fb.fbheight=0"			\
 		" bcm2708_fb.fbdepth=24 bcm2708_fb.fbswap=1"			\
 		" vc_mem.mem_base=0x3ec00000"					\
 		" vc_mem.mem_size=0x40000000 dwc_otg.lpm_enable=0"		\
 		" console=ttyAMA0,115200 rootfstype=ext4 rootwait"		\
-		" fsck.mode=force fsck.repair=yes\0"				\
+		" fsck.mode=force fsck.repair=yes\";\0"				\
 	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2\";\0"	\
 	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3\";\0"	\
 	/* Boot functions */							\
