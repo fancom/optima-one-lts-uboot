@@ -117,7 +117,7 @@
 	"kernel_addr_r=" __stringify(CONFIG_LOADADDR) "\0"			\
 	"scriptaddr=0x02400000\0"						\
 	"fdto_addr_r=0x02500000\0"						\
-	"fdt_addr=0x2eff3700\0"							\
+	"fdt_addr=0x2eff2f00\0"							\
 	"ramdisk_addr_r=0x02700000\0"						\
 	/* Error handling */							\
 	"save=saveenv; saveenv;\0"						\
