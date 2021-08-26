@@ -107,7 +107,7 @@
  * only 64M, the remaining 25M starting at 0x02700000 should allow quite
  * large initrds before they start colliding with U-Boot.
  */
-#define CONFIG_ENV_FLAGS_LIST_STATIC	"pn:so,sn:so,date:so\0"
+#define CONFIG_ENV_FLAGS_LIST_STATIC	"pn:so,sn:so,eth1addr:so\0"
 #define CONFIG_SYS_I2C_SLAVE		1
 #define CONFIG_SYS_I2C_SPEED		400000
 
@@ -117,7 +117,7 @@
 	"kernel_addr_r=" __stringify(CONFIG_LOADADDR) "\0"			\
 	"scriptaddr=0x02400000\0"						\
 	"fdto_addr_r=0x02500000\0"						\
-	"fdt_addr=0x2eff3700\0"							\
+	"fdt_addr=0x2eff2f00\0"							\
 	"ramdisk_addr_r=0x02700000\0"						\
 	/* Error handling */							\
 	"save=saveenv; saveenv;\0"						\
@@ -127,14 +127,14 @@
 	"halt=while true; do sleep 1; done;\0"					\
 	/* Boot arguments */							\
 	"status=blue\0"								\
-	"bootargs=coherent_pool=1M 8250.nr_uarts=1"				\
+	"args=setenv bootargs \"coherent_pool=1M 8250.nr_uarts=1"		\
 		" snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1"	\
 		" bcm2708_fb.fbwidth=0 bcm2708_fb.fbheight=0"			\
 		" bcm2708_fb.fbdepth=24 bcm2708_fb.fbswap=1"			\
-		" smsc95xx.macaddr=DC:A6:32:F2:AB:CD vc_mem.mem_base=0x3ec00000"\
-		" vc_mem.mem_size=0x40000000  dwc_otg.lpm_enable=0"		\
-		" console=ttyS0,115200 rootfstype=ext4 rootwait"		\
-		" fsck.mode=force fsck.repair=yes\0"				\
+		" smsc95xx.macaddr=${eth1addr} vc_mem.mem_base=0x3ec00000"	\
+		" vc_mem.mem_size=0x40000000 dwc_otg.lpm_enable=0"		\
+		" console=ttyAMA0,115200 rootfstype=ext4 rootwait"		\
+		" fsck.mode=force fsck.repair=yes\";\0"				\
 	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2\";\0"	\
 	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3\";\0"	\
 	/* Boot functions */							\
