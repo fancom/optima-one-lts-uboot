@@ -135,6 +135,8 @@
 		" vc_mem.mem_size=0x40000000 dwc_otg.lpm_enable=0"		\
 		" console=ttyAMA0,115200 rootfstype=ext4 rootwait"		\
 		" video=DSI-1:1920x1080-24"					\
+		" logo.nologo"						\
+		" vt.global_cursor_default=0"			\
 		" fsck.mode=force fsck.repair=yes\";\0"				\
 	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2\";\0"	\
 	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3\";\0"	\
