@@ -146,6 +146,6 @@
 	"boot_me=echo \"Booting ${status}\"; if test -e mmc 0:1 /boot.scr; then"\
 		" load mmc 0:1 ${scriptaddr} /boot.scr;"			\
 		" source ${scriptaddr}; fi;\0"					\
-	"bootcmd=run partsel boot_me; run clean err halt;\0"
+	"bootcmd=run partsel; run boot_me; run clean; run err; run halt;\0"
 
 #endif // __CONFIG_H
