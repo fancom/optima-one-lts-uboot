@@ -139,8 +139,8 @@
 		" logo.nologo"						\
 		" vt.global_cursor_default=0"			\
 		" fsck.mode=force fsck.repair=yes\";\0"				\
-	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2\";\0"	\
-	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3\";\0"	\
+	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2 cgroup_enable=memory\";\0"	\
+	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3 cgroup_enable=memory\";\0"	\
 	/* Boot functions */							\
 	"partsel=if test $error_cnt > $error_max; then"				\
 		" if test $status = green; then"				\
