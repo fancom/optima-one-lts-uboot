@@ -111,44 +111,50 @@
 #define CONFIG_SYS_I2C_SLAVE		1
 #define CONFIG_SYS_I2C_SPEED		400000
 
-#define CONFIG_EXTRA_ENV_SETTINGS						\
-	"fdt_high=" FDT_HIGH "\0"						\
-	"initrd_high=" INITRD_HIGH "\0"						\
-	"kernel_addr_r=" __stringify(CONFIG_LOADADDR) "\0"			\
-	"scriptaddr=0x02400000\0"						\
-	"fdto_addr_r=0x02500000\0"						\
-	"fdt_addr=0x2eff2f00\0"							\
-	"ramdisk_addr_r=0x02700000\0"						\
-	/* Error handling */							\
-	"save=saveenv; saveenv;\0"						\
-	"error_cnt=0\0"								\
-	"error_max=3\0"								\
-	"err=setexpr error_cnt $error_cnt + 1; run save; reset;\0"		\
-	"clean=setenv tmp; setenv filesize;\0"					\
-	"halt=while true; do sleep 1; done;\0"					\
-	/* Boot arguments */							\
-	"status=blue\0"								\
-	"args=setenv bootargs \"coherent_pool=1M 8250.nr_uarts=1"		\
+#define CONFIG_EXTRA_ENV_SETTINGS										\
+	"fdt_high=" FDT_HIGH "\0"											\
+	"initrd_high=" INITRD_HIGH "\0"										\
+	"kernel_addr_r=" __stringify(CONFIG_LOADADDR) "\0"					\
+	"scriptaddr=0x02400000\0"											\
+	"fdto_addr_r=0x02500000\0"											\
+	"fdt_addr=0x2eff2f00\0"												\
+	"ramdisk_addr_r=0x02700000\0"										\
+	/* Error handling */												\
+	"save=saveenv; saveenv;\0"											\
+	"error_cnt=0\0"														\
+	"error_max=3\0"														\
+	"err=setexpr error_cnt $error_cnt + 1; run save; reset;\0"			\
+	"clean=setenv tmp; setenv filesize;\0"								\
+	"halt=while true; do sleep 1; done;\0"								\
+	/* Production functions */											\
+	"pending_production_values=1\0"										\
+	"produce_me=echo \"Checking production file\";"						\
+		"if test -n \"$pending_production_values\" && -e mmc 0:1 /production.scr; then"			\
+			" load mmc 0:1 ${scriptaddr} /production.scr;"				\
+			" source ${scriptaddr}; setenv pending_production_values; run save; fi;\0"			\
+	/* Boot arguments */												\
+	"status=blue\0"														\
+	"args=setenv bootargs \"coherent_pool=1M 8250.nr_uarts=1"			\
 		" snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1"	\
-		" bcm2708_fb.fbwidth=0 bcm2708_fb.fbheight=0"			\
-		" bcm2708_fb.fbdepth=24 bcm2708_fb.fbswap=1"			\
-		" vc_mem.mem_base=0x3ec00000"					\
-		" vc_mem.mem_size=0x40000000 dwc_otg.lpm_enable=0"		\
-		" console=ttyAMA0,115200 rootfstype=ext4 rootwait"		\
-		" video=DSI-1:1920x1080-24"					\
-		" logo.nologo"						\
-		" vt.global_cursor_default=0"			\
-		" fsck.mode=force fsck.repair=yes\";\0"				\
-	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2 cgroup_enable=memory\";\0"	\
+		" bcm2708_fb.fbwidth=0 bcm2708_fb.fbheight=0"					\
+		" bcm2708_fb.fbdepth=24 bcm2708_fb.fbswap=1"					\
+		" vc_mem.mem_base=0x3ec00000"									\
+		" vc_mem.mem_size=0x40000000 dwc_otg.lpm_enable=0"				\
+		" console=ttyAMA0,115200 rootfstype=ext4 rootwait"				\
+		" video=DSI-1:1920x1080-24"										\
+		" logo.nologo"													\
+		" vt.global_cursor_default=0"									\
+		" fsck.mode=force fsck.repair=yes\";\0"							\
+	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2 cgroup_enable=memory\";\0"		\
 	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3 cgroup_enable=memory\";\0"	\
-	/* Boot functions */							\
-	"partsel=if test $error_cnt > $error_max; then"				\
-		" if test $status = green; then"				\
-			" setenv status blue; else setenv status green;"	\
-		" fi; setenv error_cnt 0; run save; fi;\0"			\
-	"boot_me=echo \"Booting ${status}\"; if test -e mmc 0:1 /boot.scr; then"\
-		" load mmc 0:1 ${scriptaddr} /boot.scr;"			\
-		" source ${scriptaddr}; fi;\0"					\
-	"bootcmd=run partsel; run boot_me; run clean; run err; run halt;\0"
+	/* Boot functions */												\
+	"partsel=if test $error_cnt > $error_max; then"						\
+		" if test $status = green; then"								\
+			" setenv status blue; else setenv status green;"			\
+		" fi; setenv error_cnt 0; run save; fi;\0"						\
+	"boot_me=echo \"Booting ${status}\"; if test -e mmc 0:1 /boot.scr; then"					\
+		" load mmc 0:1 ${scriptaddr} /boot.scr;"						\
+		" source ${scriptaddr}; fi;\0"									\
+	"bootcmd=run produce_me; run partsel; run boot_me; run clean; run err; run halt;\0"
 
 #endif // __CONFIG_H
