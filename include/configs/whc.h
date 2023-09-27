@@ -107,7 +107,7 @@
  * only 64M, the remaining 25M starting at 0x02700000 should allow quite
  * large initrds before they start colliding with U-Boot.
  */
-#define CONFIG_ENV_FLAGS_LIST_STATIC	"pn:so,sn:so,eth1addr:so\0"
+#define CONFIG_ENV_FLAGS_LIST_STATIC	"pn:so,sn:so,rev:so,eth1addr:so\0"
 #define CONFIG_SYS_I2C_SLAVE		1
 #define CONFIG_SYS_I2C_SPEED		400000
 
