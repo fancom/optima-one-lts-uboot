@@ -126,12 +126,12 @@
 	"err=setexpr error_cnt $error_cnt + 1; run save; reset;\0"			\
 	"clean=setenv tmp; setenv filesize;\0"								\
 	"halt=while true; do sleep 1; done;\0"								\
-	/* Production functions */											\
-	"pending_production_values=1\0"										\
-	"produce_me=echo \"Checking production file\";"						\
-		"if test -n \"$pending_production_values\" && test -e mmc 0:1 /production.scr; then"	\
-			" load mmc 0:1 ${scriptaddr} /production.scr;"				\
-			" source ${scriptaddr}; setenv pending_production_values; run save; fi;\0"			\
+	/* Factory functions */											\
+	"pending_factory_values=1\0"										\
+	"produce_me=echo \"Checking factory file\";"						\
+		"if test -n \"$pending_factory_values\" && test -e mmc 0:1 /factory.scr; then"	\
+			" load mmc 0:1 ${scriptaddr} /factory.scr;"				\
+			" source ${scriptaddr}; setenv pending_factory_values; run save; fi;\0"			\
 	/* Boot arguments */												\
 	"status=blue\0"														\
 	"args=setenv bootargs \"coherent_pool=1M 8250.nr_uarts=1"			\
