@@ -129,7 +129,7 @@
 	/* Production functions */											\
 	"pending_production_values=1\0"										\
 	"produce_me=echo \"Checking production file\";"						\
-		"if test -n \"$pending_production_values\" && -e mmc 0:1 /production.scr; then"			\
+		"if test -n \"$pending_production_values\" && test -e mmc 0:1 /production.scr; then"	\
 			" load mmc 0:1 ${scriptaddr} /production.scr;"				\
 			" source ${scriptaddr}; setenv pending_production_values; run save; fi;\0"			\
 	/* Boot arguments */												\
