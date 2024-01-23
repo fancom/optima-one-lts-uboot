@@ -142,8 +142,6 @@
 		" vc_mem.mem_size=0x40000000 dwc_otg.lpm_enable=0"				\
 		" console=ttyAMA0,115200 rootfstype=ext4 rootwait"				\
 		" fsck.mode=force fsck.repair=yes\";\0"							\
-	"args_blue=setenv bootargs \"${bootargs} root=/dev/mmcblk0p2 cgroup_enable=memory\";\0"		\
-	"args_green=setenv bootargs \"${bootargs} root=/dev/mmcblk0p3 cgroup_enable=memory\";\0"	\
 	/* Boot functions */												\
 	"partsel=if test $error_cnt > $error_max; then"						\
 		" if test $status = green; then"								\
